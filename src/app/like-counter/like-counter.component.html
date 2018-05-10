@@ -1,5 +1,5 @@
 <div class="like-counter">
-  <p class="like-counter__counter">0</p>
-  <button class="like-counter__button"></button>
-  <button class="like-counter__button like-counter__button--inverted"></button>
+  <p class="like-counter__counter">{{rating}}</p>
+  <button class="like-counter__button" (click)="rateComic(true)">+</button>
+  <button class="like-counter__button like-counter__button--inverted" (click)="rateComic(false)">-</button>
 </div>
