@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MarvelApiService } from '../services/marvel-api.service'
+import { MarvelApiService } from '../services/marvel-api/marvel-api.service'
 
 
 @Component({
@@ -23,7 +23,6 @@ export class GridComponent implements OnInit {
       result => {
         this.comics = this.extractData(result.data.results);
         console.log(this.comics);
-
       },
       error => {
         var errorMsj = <any>error;
@@ -33,9 +32,11 @@ export class GridComponent implements OnInit {
   }
   extractData(data) {
     return data.map(element => {
+    const regExp = /[(.\d)]{6}/img;
+    const date = element.title.match(regExp)+"";
       return {
-        "title": element.title, "date": element.dates.filter(
-          date => date.type === 'onsaleDate')[0].date,
+        "date": date === "null" ? "Unknown": date,
+        "title": element.title.slice(0,element.title.indexOf(date)),
         "thumbnail": element.thumbnail.path + '.' + element.thumbnail.extension
       }
     })

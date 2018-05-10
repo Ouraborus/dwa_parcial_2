@@ -1,7 +1,8 @@
 <section>
   <ul class="grid">
     <li *ngFor="let comic of comics" class="grid__element">
-        <img class="grid__comic" src="{{comic.thumbnail}}" alt="" class="grid__comic">
+      <app-like-counter></app-like-counter>
+      <img class="grid__comic" src="{{comic.thumbnail}}" alt="">
     </li>
   </ul>
 </section>

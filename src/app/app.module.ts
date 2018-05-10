@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { HttpModule } from '@angular/http';
+import { LikeCounterComponent } from './like-counter/like-counter.component';
 
 
 
@@ -12,6 +13,7 @@ import { HttpModule } from '@angular/http';
   declarations: [
     AppComponent,
     GridComponent,
+    LikeCounterComponent,
   ],
   imports: [
     BrowserModule,
