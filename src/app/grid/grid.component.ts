@@ -11,7 +11,7 @@ import { MarvelApiService } from '../services/marvel-api.service'
 })
 export class GridComponent implements OnInit {
 
-  public comics:any;
+  public comics: any;
 
   constructor(
     private _marvelApiService: MarvelApiService,
@@ -21,13 +21,24 @@ export class GridComponent implements OnInit {
   ngOnInit() {
     this.comics = this._marvelApiService.getComics().subscribe(
       result => {
-        console.log(result);
+        this.comics = this.extractData(result.data.results);
+        console.log(this.comics);
+
       },
       error => {
         var errorMsj = <any>error;
         console.log(errorMsj);
       }
     );
+  }
+  extractData(data) {
+    return data.map(element => {
+      return {
+        "title": element.title, "date": element.dates.filter(
+          date => date.type === 'onsaleDate')[0].date,
+        "thumbnail": element.thumbnail.path + '.' + element.thumbnail.extension
+      }
+    })
   }
 
 }
