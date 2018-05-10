@@ -1,9 +1,9 @@
 <section>
-  <div class="grid__filter">
-    <input type="text" class="grid__search-bar">
+  <div class="grid__filter" >
+    <input type="text" class="grid__search-bar" [(ngModel)]="searchText">
   </div>
   <ul class="grid">
-    <li *ngFor="let comic of comics" class="grid__element">
+    <li *ngFor="let comic of comics | filter:searchText;" class="grid__element">
       <div class="grid__container">
         <p class="grid__text">{{comic.title}}</p>
         <p class="grid__text">{{comic.date}}</p>

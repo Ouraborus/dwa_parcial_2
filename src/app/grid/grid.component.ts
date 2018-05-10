@@ -22,7 +22,6 @@ export class GridComponent implements OnInit {
     this.comics = this._marvelApiService.getComics().subscribe(
       result => {
         this.comics = this.extractData(result.data.results);
-        console.log(this.comics);
       },
       error => {
         var errorMsj = <any>error;
